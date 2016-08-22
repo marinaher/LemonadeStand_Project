@@ -1,1 +1,5 @@
 C:\Users\reald\Documents\GitHub\devCodeCamp Projects\LemonadeStand_Project\LemonadeStand_Project\bin\Debug\LemonadeStand_Project.exe.config
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\LemonadeStand_Project\LemonadeStand_Project\bin\Debug\LemonadeStand_Project.exe
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\LemonadeStand_Project\LemonadeStand_Project\bin\Debug\LemonadeStand_Project.pdb
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\LemonadeStand_Project\LemonadeStand_Project\obj\Debug\LemonadeStand_Project.exe
+C:\Users\reald\Documents\GitHub\devCodeCamp Projects\LemonadeStand_Project\LemonadeStand_Project\obj\Debug\LemonadeStand_Project.pdb

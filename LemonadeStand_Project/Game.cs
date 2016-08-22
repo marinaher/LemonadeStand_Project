@@ -14,7 +14,6 @@ namespace LemonadeStandProject
         Recipe recipe = new Recipe();
         Day day = new Day();
         BuyFromStore buyFromStore = new BuyFromStore();
-        Customer customer;
 
         public int dayNumber = 1;
 
@@ -62,7 +61,7 @@ namespace LemonadeStandProject
             Console.Clear();
 
             day.StartDay();
-            day.CustomerTransactions(inventory, player, customer);
+            day.CustomerTransactions(inventory, player);
         }
     }
 }

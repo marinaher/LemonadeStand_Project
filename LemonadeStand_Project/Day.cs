@@ -8,13 +8,34 @@ namespace LemonadeStandProject
 {
     public class Day
     {
+        public List<Customer> CustomerList = new List<Customer>();
+        Random random = new Random();
+
         public int dayNumber;
         public double lemonadePrice;
         public double endOfDayTotal;
+        public double people;
+        public int pitcher;
 
         public Day()
         {
             dayNumber = 1;
+            pitcher = 6;
+        }
+        public List<Customer> CreateCustomer(Weather weather)
+        {
+            people = weather.currentTemperature * 0.50;
+
+            for (int i = 0; i < people; i++)
+            {
+                Customer customer = new Customer();
+
+                customer.thirst = customer.GetThirst();
+                customer.customerCash = customer.GetCustomerCash();
+
+                CustomerList.Add(customer);
+            }
+            return CustomerList;
         }
         public void StartDay()
         {
@@ -31,11 +52,11 @@ namespace LemonadeStandProject
             }
             Console.WriteLine("Got it. Each cup of Lemonade cost ${0}.", lemonadePrice);
         }
-        public void CustomerTransactions(Inventory inventory, Player player, Customer customer)
+        public void CustomerTransactions(Inventory inventory, Player player)
         {
             int customerCapabilityToBuy = 0;
 
-            foreach (Customer person in customer.CustomerList)
+            foreach (Customer customer in CustomerList)
             {
                 if (customer.customerCash >= lemonadePrice && customer.thirst > 1)
                 {
@@ -52,13 +73,13 @@ namespace LemonadeStandProject
                 if (inventory.inventoryLemonCount >= 1 && inventory.inventorySugarCount >= 1 && inventory.inventoryIceCount >= 3 && inventory.inventoryCupsCount >= 6)
                 {
                     inventory.UpdateInventory();
-                    while (customerCapabilityToBuy >= customer.pitcher)
+                    while (customerCapabilityToBuy >= pitcher)
                     {
-                        endOfDayTotal = player.amountOfMoney + (lemonadePrice * customer.pitcher);
-                        customerCapabilityToBuy -= customer.pitcher;
-                        for (int i = 0; i < customer.pitcher; i++)
+                        endOfDayTotal = player.amountOfMoney + (lemonadePrice * pitcher);
+                        customerCapabilityToBuy -= pitcher;
+                        for (int i = 0; i < pitcher; i++)
                         {
-                            customer.CustomerList.RemoveAt(0);
+                            CustomerList.RemoveAt(0);
                         }
                         if (inventory.inventoryLemonCount >= 1 && inventory.inventorySugarCount >= 1 && inventory.inventoryIceCount >= 3 && inventory.inventoryCupsCount >= 6)
                         {
@@ -72,7 +93,7 @@ namespace LemonadeStandProject
                     player.amountOfMoney += (lemonadePrice * customerCapabilityToBuy);
                     for (int i = 0; i < customerCapabilityToBuy; i++)
                     {
-                        customer.CustomerList.RemoveAt(0);
+                        CustomerList.RemoveAt(0);
                     }
                     Console.WriteLine("Total amount in your wallet at the end of today is ${0}.", endOfDayTotal);
                     Console.ReadLine();
